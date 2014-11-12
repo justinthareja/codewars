@@ -169,7 +169,7 @@ function swapValues(args) {
 
 
 /*******************************************************************************************
-Get Planey by ID
+Get Planet by ID
 *******************************************************************************************/
 
 function getPlanetName(id){
@@ -203,8 +203,4 @@ function getPlanetName(id){
   
   return name;
 }
-
-
-
-
 
