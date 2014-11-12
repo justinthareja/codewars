@@ -1,5 +1,5 @@
 /*******************************************************************************************
-Convert a String to a Number!
+Convert a String to a Number! -- number + string = string
 *******************************************************************************************/
 
 // MY SOLUTION
@@ -17,7 +17,7 @@ var stringToNumber = function(str){
 
 
 /*******************************************************************************************
-The 'if' function
+The 'if' function -- ternary operator 
 *******************************************************************************************/
 
 // MY SOLUTION
@@ -35,7 +35,7 @@ function _if(bool, func1, func2) {
 
 
 /*******************************************************************************************
-Arithmetic Sequence!
+Arithmetic Sequence! 
 *******************************************************************************************/
 
 // MY SOLUTION = TOP SOLUTION 
@@ -81,7 +81,7 @@ function always(n) {
 
 
 /*******************************************************************************************
-Sum Arrays
+Sum Arrays -- glance into higher-order functions with .reduce
 *******************************************************************************************/
 
 // MY SOLUTION
@@ -104,7 +104,7 @@ function sum(numbers) {
 
 
 /*******************************************************************************************
-Sentence Smash
+Sentence Smash -- intro to native .join method, unnecessary logic
 *******************************************************************************************/
 
 // MY SOLUTION
@@ -135,7 +135,7 @@ if (words.length > 0) {
 
 
 /*******************************************************************************************
-Even or Odd
+Even or Odd -- ternary operator practice
 *******************************************************************************************/
 
 // MY SOLUTION = TOP SOLUTION
@@ -147,7 +147,7 @@ function even_or_odd(number) {
 
 
 /*******************************************************************************************
-Swap Values
+Swap Values -- intro to native .reverse method
 *******************************************************************************************/
 
 // MY SOLUTION
@@ -169,7 +169,7 @@ function swapValues(args) {
 
 
 /*******************************************************************************************
-Get Planet by ID
+Get Planet by ID -- don't overlook the break when invoking a switch
 *******************************************************************************************/
 
 function getPlanetName(id){
@@ -203,4 +203,54 @@ function getPlanetName(id){
   
   return name;
 }
+
+
+
+/*******************************************************************************************
+Shifty Closures
+*******************************************************************************************/
+
+var greet_abe = function() {
+	return globalGreet('Abe');
+};
+
+var greet_ben = function() {
+	return globalGreet('Ben');
+};
+
+function globalGreet (name) {
+	return "Hello, " + name + '!';
+}
+
+
+
+/*******************************************************************************************
+Return to Sanity: NEW CONCEPT (semi-colon insertion)
+*******************************************************************************************/
+
+// function mystery() {
+//   var results =
+//     {sanity: 'Hello'};
+//   return // return by itself is a statement, so Javascript will automatically enter a semi colon at the end of the line for a valid statement. 
+//     results;
+// }
+
+function mystery() {
+  var results =
+    {sanity: 'Hello'};
+  return results; 
+}
+
+
+
+/*******************************************************************************************
+Semi Optional
+*******************************************************************************************/
+function wrap(value) {
+  return {
+  	'value': value //converted the key to a string to avoid conflict
+  };
+}
+
+
 
