@@ -27,7 +27,7 @@ function filter_list(l) {
 Weight of its Contents
 *******************************************************************************************/
 
-// MY SOLUTUION
+// MY SOLUTION
 
 function contentWeight(bottleWeight, scale) {
 
@@ -91,5 +91,44 @@ var Calculator = {
 
 
 
+/*******************************************************************************************
+Javascript Array Filter -- higher order functions (as arg)
+*******************************************************************************************/
+
+function getEvenNumbers(numbersArray){
+	return numbersArray.filter(function (a) {
+		return !(a % 2);
+	})
+}
+
+
+
+/*******************************************************************************************
+Javascript Array Filter -- higher order functions (as args)
+*******************************************************************************************/
+
+var data = [
+  {name: 'Joe', age: 20},
+  {name: 'Bill', age: 30},
+  {name: 'Kate', age: 23}
+]
+
+function getNames(data){
+  return data.map(function(item) {
+  	return item.name;
+  });
+}
+
+
+
+/*******************************************************************************************
+Anagram Detection
+*******************************************************************************************/
+
+function isAnagram (test, original) {
+	var t = test.toLowerCase().split("").sort().join("");
+	var o = original.toLowerCase().split("").sort().join("");
+	return t === o;
+}
 
 
