@@ -209,6 +209,189 @@ return firstName + " " + lastName;
 
 }
 
+/*******************************************************************************************
+Use map() to double the values in an array
+*******************************************************************************************/
+
+// declare a function named double that takes an array as its only argument
+// double will return a new array 
+// the function passed through map will do the doubling
+
+function double (array) {
+	return array.map(function (element) {
+		return element * 2;
+	})
+}
+
+/*******************************************************************************************
+(Don't) make me repeat myself
+*******************************************************************************************/
+
+// repeat will take an integer as its only argument
+// the goal is to repeat the string that is applied by the number inputted as the arg
+
+// how do methods work? do you just return a new string?  
+// -- upon further investigation: the method repeat is just an anon function thats stored as
+// a property of the String.prototype object
+
+// how do you extract the original string the method was called on?
+// 'this' returns a string object with each letter of the string as a different numerical key, starting at 0
+
+// store 'this' into a var called cur
+// execute a for loop to extract the values of 'this' into string form and store into var rpt
+
+// execute a for loop to repeat rpt by count and store into var end
+// return end
+
+
+String.prototype.repeat = function(count) {
+	var cur = this, rpt = '', end = '';
+
+	for (i = 0; i < cur.length; i++) {
+		rpt += cur[i]; 
+	}
+
+	if (count === undefined) {
+		return rpt;
+	}
+	// rpt is now the original string inputted
+
+	for (i = 0; i < count; i++) {
+		end += rpt;
+	}
+
+	return end; 
+};
+
+// other variations:
+
+String.prototype.repeat = function(count) {
+  return new Array(count + 1).join(this);
+};
+
+// new Array(count + 1) creates a new array where array.length = count + 1
+// .join() is a native array method that glues all the elements in the array with whatever is in between the parenthesis
+// this is the original string object that .repeat is run on
+// 'this' has many different properties, how does .join know to use [[PrimitiveValue]]? I wasn't aware of this behavior which explains the first
+// for loop in my own solution
+
+String.prototype.whatIsThis = function (something) {
+	return this;
+}
+
+
+
+/*******************************************************************************************
+Say "Hello World" JS Style
+*******************************************************************************************/
+
+var say = function (string1) {
+	return function (string2) {
+		return string1 + ' ' + string2;
+	}
+}
+
+// invoking say('Hello') returns a new function that looks like:
+
+// function (string2) {
+// 	return string1 + ' ' + string2;
+// }
+
+// where string1 = 'Hello' and is available to the returned function due to JS's function scope
+
+// invoking this anon function with any argument will return "Hello" + ' ' + string2.
+
+// Say Hello World with the following invokation:
+
+say("Hello")("World");
+
+
+
+/*******************************************************************************************
+Adding useful functional functionality to JavaScript arrays
+*******************************************************************************************/
+
+// The JavaScript standard now includes functional additions to array like map, filter and reduce, 
+// but sadly is missing the convenience functions range and sum . Implement a version of range and sum 
+// (which you can then copy and use in your future Kata to make them smaller).
+// While not forbidden try to write both function without using a for loop
+
+
+// RANGE Example: Array.range(0, 3) returns [0, 1, 2]
+
+// .range() will be a method on the Array object. 
+// it will accept two arguments, start and count
+// it will return an array containing 'count' numbers from 'start' to 'start + count' 
+
+// the easiest way would be to create an empty array, and run a for loop from i = start to i < count 
+// inside the for loop would push i to the empty array
+// return the empty array outside the for loop
+
+
+Array.range = function (start, count) {
+	var range = [];
+
+	for (i = 0; i < count; i++) {
+		range.push(start + i);
+	}
+	return range;
+}
+
+
+// SUM Example: [0, 1, 2].sum() returns 3 
+
+// .sum will be a method on the Array object
+// accepts no arguments
+// returns a sum of all the elements in the array it was run on
+// use the reduce method and pass through a function that sums the previous value on the current value
+
+Array.prototype.sum = function () {
+	if (this.length) {
+		return this.reduce(function (a, b) {
+			return a + b;
+		})	
+	}
+	else {
+		return 0;
+	}
+}
+
+
+Array.prototype.whatIsThis = function () {
+	return this.length;
+}
+
+
+// BEST PRACTICES
+
+Array.range = function(start, count) {
+  return Array.apply(null, Array(count)).map(function(e, i) {
+    return start + i;
+  });
+}
+
+Array.prototype.sum = function() {
+  return this.reduce(function(prev, next) {
+    return prev + next;
+  }, 0);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
