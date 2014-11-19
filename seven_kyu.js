@@ -132,3 +132,86 @@ function isAnagram (test, original) {
 }
 
 
+
+/*******************************************************************************************
+Unpacking Arguments
+*******************************************************************************************/
+
+function spread(func, args) {
+
+	// must unpack the args out of the array and apply it to func
+	// return the function with arguments stripped out of the array
+	// which would look like return func(arg[0], arg[1], arg[2]) but you can't assume any lengths
+
+	return func.apply(window, args); // works when run in chrome, didn't work when run in kata
+	return func.apply(this, args); // works when run in kata
+	return func.apply(null, args); // was the 'best practice'
+}
+
+
+
+/*******************************************************************************************
+Differential Averaging
+*******************************************************************************************/
+
+function addToAverage(current, points, add) {
+	return ((current * points) + add) / (++points);
+}
+
+
+
+/*******************************************************************************************
+Functional Addition
+*******************************************************************************************/
+
+function addThis(n) {
+	return function toThis (m) {
+		return n + m;
+	}
+}
+
+
+
+/*******************************************************************************************
+Find Your Villan Name
+*******************************************************************************************/
+
+var villainFirst = ["The Evil",
+ "The Vile",
+ "The Cruel",
+ "The Trashy",
+ "The Despicable",
+ "The Embarrassing",
+ "The Disreputable",
+ "The Atrocious",
+ "The Twirling",
+ "The Orange",
+ "The Terrifying",
+ "The Awkward"]
+
+var villainLast = ["Mustache",
+ "Pickle",
+ "Hood Ornament",
+ "Raisin",
+ "Recycling Bin",
+ "Potato",
+ "Tomato",
+ "House Cat",
+ "Teaspoon",
+ "Laundry Basket"]
+
+function getVillainName(birthday){
+
+var lastName = villainLast[birthday.getDate() % 10];
+var firstName = villainFirst[birthday.getMonth()];
+
+return firstName + " " + lastName;
+
+}
+
+
+
+
+
+
+
