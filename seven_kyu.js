@@ -345,56 +345,137 @@ Array.range = function (start, count) {
 // returns a sum of all the elements in the array it was run on
 // use the reduce method and pass through a function that sums the previous value on the current value
 
-Array.prototype.sum = function () {
-	if (this.length) {
-		return this.reduce(function (a, b) {
-			return a + b;
-		})	
-	}
-	else {
-		return 0;
-	}
-}
+// Array.prototype.sum = function () {
+// 	if (this.length) {
+// 		return this.reduce(function (a, b) {
+// 			return a + b;
+// 		})	
+// 	}
+// 	else {
+// 		return 0;
+// 	}
+// }
 
 
-Array.prototype.whatIsThis = function () {
-	return this.length;
-}
+// Array.prototype.whatIsThis = function () {
+// 	return this.length;
+// }
+
+// // BEST PRACTICES
+
+// Array.range = function(start, count) {
+//   return Array.apply(null, Array(count)).map(function(e, i) {
+//     return start + i;
+//   });
+// }
+
+// Array.prototype.sum = function() {
+//   return this.reduce(function(prev, next) {
+//     return prev + next;
+//   }, 0);
+// }
+// reduce has an optional second argument for initial value 
 
 
-// BEST PRACTICES
 
-Array.range = function(start, count) {
-  return Array.apply(null, Array(count)).map(function(e, i) {
-    return start + i;
+/*******************************************************************************************
+For the Sake of Argument
+*******************************************************************************************/
+
+// Write a function named numbers that returns true if all the parameters it is passed are of the 
+// Number type. Otherwise, the function should return false. The function should accept any number 
+// of parameters
+
+// first thing first, figure out how to extract all the numbers into a data structure you can manipulate.
+// dabble with function.arguments --> returns an array of arguments
+
+// run a forEach loop that returns a Boolean value where:
+// typeof element === number 
+// and store it in a new array = var isNumber
+
+// numbers returns a Boolean value where:
+// indexOf(false) > 0
+
+
+// function.arguments IS NOT AN ARRAY, it's an array-like object that only shares the .length property with arrays
+// use the following code snippet to convert into an array: var args = Array.prototype.slice.call(arguments);
+
+// function numbers () {
+// 	var isNumber = [], 
+// 		args = [].slice.call(arguments) // same as Array.prototype.slice.call(arguments)
+
+// 	args.forEach(function (element) {
+// 		isNumber.push(typeof element === 'number');
+// 	})
+
+// 	return isNumber.indexOf(false) === -1; // indexOf === -1 when the value does not exist in the array indexOf is iterating over
+// }
+
+// BEST PRACTICE
+
+function numbers() {
+  return [].every.call(arguments, function (value) {
+    return typeof value === "number";
   });
 }
 
-Array.prototype.sum = function() {
-  return this.reduce(function(prev, next) {
-    return prev + next;
-  }, 0);
+// the variable arguments returns an array-like object within if the function scope (don't need the functon prefix)
+
+
+
+/*******************************************************************************************
+Playing with Types
+*******************************************************************************************/
+
+// in this case, there will be a certain type and value to the argument
+// the types are finite and of a small volume, so this sounds like a good time to write a switch statement for the first time
+// the types are: object, boolean, string, number
+
+
+function typing (param) {
+	console.log(typeof param);
+	switch (param) {
+		case typeof param === 'boolean':
+			return 'boolean=' + param.toString();
+			break;
+		case typeof param === 'object':
+			return 'object=' + param.toString();
+			break;
+		case typeof param === 'string':
+			return 'string=' + param.toString();
+			break;
+		case typeof param === 'number':
+			return 'number=' + param.toString();
+			break;		
+	}
+
 }
 
 
+// function fruit (expr) {
+// 	switch (expr) {
+// 	  case "Oranges":
+// 	    console.log("Oranges are $0.59 a pound.");
+// 	    break;
+// 	  case "Apples":
+// 	    console.log("Apples are $0.32 a pound.");
+// 	    break;
+// 	  case "Bananas":
+// 	    console.log("Bananas are $0.48 a pound.");
+// 	    break;
+// 	  case "Cherries":
+// 	    console.log("Cherries are $3.00 a pound.");
+// 	    break;
+// 	  case "Mangoes":
+// 	  case "Papayas":
+// 	    console.log("Mangoes and papayas are $2.79 a pound.");
+// 	    break;
+// 	  default:
+// 	    console.log("Sorry, we are out of " + expr + ".");
+// 	}
+
+// 	console.log("Is there anything else you'd like?");
+// }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// tldr: fuck switch statements
