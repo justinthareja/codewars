@@ -445,7 +445,7 @@ Playing with Types
 *******************************************************************************************/
 
 // in this case, there will be a certain type and value to the argument
-// the types are finite and of a small volume, so this sounds like a good time to write a switch statement for the first time
+// the types are finite and of a small volume, so this sounds like a good time to write a switch statement for the first time SIKE -- never a good time to write a switch statement
 // the types are: object, boolean, string, number
 
 
@@ -495,4 +495,190 @@ function typing (param) {
 // }
 
 
-// tldr: fuck switch statements
+// tldr: aint no body got time to fuck with switch statements
+
+
+
+/*******************************************************************************************
+Sentences with Functions
+*******************************************************************************************/
+
+// Adam(has(a(dog()))) should return: 'Adam has a dog'
+
+// start with Adam(has()) returning "Adam has"
+// Adam takes a function as an argument 
+// has takes no arguments and has to return something back to Adam to return something back to the console.
+
+
+function Adam(fun) {
+	if (arguments.length === 0) // piece of logic i was missing for the calculator problem
+		return 'Adam';
+	else {
+		var a = 'Adam ';
+		a += fun;
+		return a;	
+	}
+
+}
+
+function has(fun) {
+	if (arguments.length === 0)
+		return 'has';
+	else {
+		var a = 'has ';
+		a += fun;
+		return a;	
+	}
+
+}
+
+// expand to include a dog
+
+function a(fun) {
+	if (arguments.length === 0)
+		return 'a';
+	else {
+		var a = 'a ';
+		a += fun;
+		return a;	
+	}
+
+}
+
+function dog(fun) {
+	if (arguments.length === 0)
+		return 'dog';
+	else {
+		var a = 'dog ';
+		a += fun;
+		return a;	
+	}
+
+}
+
+// expand to include the rest
+
+function The(fun) {
+	if (arguments.length === 0)
+		return 'The';
+	else {
+		var a = 'The ';
+		a += fun;
+		return a;	
+	}
+
+}
+
+function name(fun) {
+	if (arguments.length === 0)
+		return 'name';
+	else {
+		var a = 'name ';
+		a += fun;
+		return a;	
+	}
+
+}
+
+function of(fun) {
+	if (arguments.length === 0)
+		return 'of';
+	else {
+		var a = 'of ';
+		a += fun;
+		return a;	
+	}
+
+}
+
+function the(fun) {
+	if (arguments.length === 0)
+		return 'the';
+	else {
+		var a = 'the ';
+		a += fun;
+		return a;	
+	}
+
+}
+
+function is(fun) {
+	if (arguments.length === 0)
+		return 'is';
+	else {
+		var a = 'is ';
+		a += fun;
+		return a;	
+	}
+
+}
+
+function also(fun) {
+	if (arguments.length === 0)
+		return 'also';
+	else {
+		var a = 'also ';
+		a += fun;
+		return a;	
+	}
+
+}
+
+
+// having 11 different functions with the same behavior seems ridiculous, how should I refactor into an object? 
+// good q for dan.
+
+
+
+/*******************************************************************************************
+Limit string length - 1
+*******************************************************************************************/
+
+// solution returns a truncated version of string based on the test
+// seems like a good time to incorporate slice
+// no need to convert into an array first, there's a slice method on String
+
+
+function solution (string, limit) {
+	return limit >= string.length ? string : string.slice(0, limit) + '...';
+}
+
+// the first argument passed through slice is the index of the string where the slice begins
+// the second argumnet passed through is the end (non inclusive)
+// only diff between this and best practice is using substr instead of splice
+
+
+
+/*******************************************************************************************
+Bolied Eggs
+*******************************************************************************************/
+
+// Implement a function, which takes a non-negative integer, representing the number of eggs to boil. 
+// It must return the time in minutes (integer), which it takes to have all the eggs boiled.
+
+// you can put at most 8 eggs into the pot at once
+// it takes 5 minutes to boil an egg
+// we assume, that the water is boiling all the time (no time to heat up)
+// for simplicity we also don't consider the time it takes to put eggs into the pot or get them out of it
+
+function eggTimer (numEggs) {
+	var potLoad = Math.ceil(numEggs / 8);
+	var boilTime = 5; //in minutes
+
+	return potLoad * boilTime;
+}
+
+// EZ math
+
+
+
+
+
+
+
+
+
+
+
+
+
