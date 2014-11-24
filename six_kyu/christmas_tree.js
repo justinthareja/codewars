@@ -10,6 +10,7 @@
 //  ******* 
 // *********
 
+
 // Height passed is always an integer between 0 and 100.
 
 // Use \n for newlines between each line.
@@ -55,50 +56,85 @@
 // 	return str;
 // }
 
-function star(num) {
-	var str = '*';
-	for (i = 0; i < num; i++) {
-		str += '**';
-	}
-	return str;
-}
+// function star(num) {
+// 	var str = '*';
+// 	for (i = 0; i < num; i++) {
+// 		str += '**';
+// 	}
+// 	return str;
+// }
 
-function pad(num) {
-	var str = ''
-	for (i = 0; i < num; i++) {
-		str += ' '
-	}
-	return str;
-}
+// function pad(num) {
+// 	var str = ''
+// 	for (i = 0; i < num; i++) {
+// 		str += ' '
+// 	}
+// 	return str;
+// }
 
-// this code returns the proper solution for height = 5
-	// console.log(pad(4) + star(0) + pad(4))
-	// console.log(pad(3) + star(1) + pad(3))
-	// console.log(pad(2) + star(2) + pad(2))
-	// console.log(pad(1) + star(3) + pad(1))
-	// console.log(pad(0) + star(4) + pad(0))
+// // this code returns the proper solution for height = 5
+// 	// console.log(pad(4) + star(0) + pad(4))
+// 	// console.log(pad(3) + star(1) + pad(3))
+// 	// console.log(pad(2) + star(2) + pad(2))
+// 	// console.log(pad(1) + star(3) + pad(1))
+// 	// console.log(pad(0) + star(4) + pad(0))
  
-// run a for loop that compiles with the build construction as noted above
-	// pad is always height - (i + 1) 
-	// star is always i
+// // run a for loop that compiles with the build construction as noted above
+// 	// pad is always height - (i + 1) 
+// 	// star is always i
 
-function christmasTree(height) {
+// function christmasTree(height) {
 	
-	var tree = '';
+// 	var tree = '';
+// 	for (i = 0; i < height; i++) {
+// 		tree += pad(height - i - 1);
+// 		tree += star(i);
+// 		tree += pad(height - i - 1);
+// 		tree +=  '\n';
+// 	}
+// 	return tree;
+// }
+
+
+
+// NEW APPROACH:
+
+//     *    
+//    ***   
+//   *****  
+//  ******* 
+// *********
+
+// nested for loops
+// first for loop covers the height: for (i = 0; i < height; i++)
+// when i is 0, only 1 star needs to be printed with 0 padding
+// when i is 1, 3 stars need to be printed with 
+
+function christmasTree (height) {
+		
+
 	for (i = 0; i < height; i++) {
-		tree += pad(height - i - 1);
-		tree += star(i);
-		tree += pad(height - i - 1);
-		tree +=  '\n';
+
+		var tree = ''
+
+		var spaces = height - 1 - i;
+		var stars = 1 + i * 2;
+
+		for (j = 0; j < spaces; j++) {
+			tree += ' ';
+		}
+
+		for (k = 0; k < stars; k++) {
+			tree += '*';
+		}
+
+		for (l = 0; l < spaces; l++) {
+			tree += ' ';
+		}
+
+		console.log(tree);
 	}
-	return tree;
 }
-
-// refactor pad and star to work based on height and implement recursion:
-
-
-
-
 
 
 
