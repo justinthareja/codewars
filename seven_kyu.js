@@ -422,6 +422,23 @@ function numbers() {
 // the variable arguments returns an array-like object within if the function scope (don't need the functon prefix)
 
 
+// function numbers() {
+//   var args = [].slice.call(arguments, 1, 3);
+//   var args = [].slice.apply(arguments, [1, 3]);
+
+  
+//   return [].every.call(arguments, function (value) {
+//     return typeof value === "number";
+//   });
+// }
+
+
+// [1,2,3,4].slice(1); // [2,3,4]
+
+
+// fun.call(thisArg[, arg1[, arg2[, ...]]])
+
+
 
 /*******************************************************************************************
 Playing with Types
