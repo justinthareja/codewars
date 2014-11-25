@@ -511,117 +511,48 @@ Sentences with Functions
 
 
 function Adam(fun) {
-	if (arguments.length === 0) // piece of logic i was missing for the calculator problem
-		return 'Adam';
-	else {
-		var a = 'Adam ';
-		a += fun;
-		return a;	
-	}
-
+	return fun ? 'Adam ' + fun : 'Adam.';
 }
 
-function has(fun) {
-	if (arguments.length === 0)
-		return 'has';
-	else {
-		var a = 'has ';
-		a += fun;
-		return a;	
-	}
 
+function has(fun) {
+	return fun? 'has ' + fun : 'has.';
 }
 
 // expand to include a dog
 
 function a(fun) {
-	if (arguments.length === 0)
-		return 'a';
-	else {
-		var a = 'a ';
-		a += fun;
-		return a;	
-	}
-
+	return fun? 'a ' + fun : 'a.';
 }
 
 function dog(fun) {
-	if (arguments.length === 0)
-		return 'dog';
-	else {
-		var a = 'dog ';
-		a += fun;
-		return a;	
-	}
-
+	return fun? 'dog ' + fun : 'dog.';
 }
 
 // expand to include the rest
 
 function The(fun) {
-	if (arguments.length === 0)
-		return 'The';
-	else {
-		var a = 'The ';
-		a += fun;
-		return a;	
-	}
-
+	return fun? 'The ' + fun : 'The.';
 }
 
 function name(fun) {
-	if (arguments.length === 0)
-		return 'name';
-	else {
-		var a = 'name ';
-		a += fun;
-		return a;	
-	}
-
+	return fun? 'name ' + fun : 'name.';
 }
 
 function of(fun) {
-	if (arguments.length === 0)
-		return 'of';
-	else {
-		var a = 'of ';
-		a += fun;
-		return a;	
-	}
-
+	return fun? 'of ' + fun : 'of.';
 }
 
 function the(fun) {
-	if (arguments.length === 0)
-		return 'the';
-	else {
-		var a = 'the ';
-		a += fun;
-		return a;	
-	}
-
+	return fun? 'the ' + fun : 'the.';
 }
 
 function is(fun) {
-	if (arguments.length === 0)
-		return 'is';
-	else {
-		var a = 'is ';
-		a += fun;
-		return a;	
-	}
-
+	return fun? 'is ' + fun : 'is.';
 }
 
 function also(fun) {
-	if (arguments.length === 0)
-		return 'also';
-	else {
-		var a = 'also ';
-		a += fun;
-		return a;	
-	}
-
+	return fun? 'also ' + fun : 'also.';
 }
 
 
