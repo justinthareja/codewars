@@ -80,16 +80,16 @@ function zipObject (keys, values) {
 
 
 
-function zipObject(keys, values) {   
-  var result = {};
+// function zipObject(keys, values) {   
+//   var result = {};
   
-  (keys || []).forEach(function(item, index) { 
-    if (item instanceof Array) {
-      result[item[0]] = item[1];
-    } else {
-      result[item] = (values || [])[index];
-    }
-  });
+//   (keys || []).forEach(function(item, index) { 
+//     if (item instanceof Array) {
+//       result[item[0]] = item[1];
+//     } else {
+//       result[item] = (values || [])[index];
+//     }
+//   });
   
-  return result;  
-}
+//   return result;  
+// }
