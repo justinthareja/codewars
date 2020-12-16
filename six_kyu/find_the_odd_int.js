@@ -4,24 +4,24 @@
 
 
 function isOdd(n) {
-    return !Number.isInteger(n / 2);
+    return n % 2 !== 0;
 }
 
 function findOdd(numbers) {
     let counts = {};
     
-    numbers.forEach((number) => {
-        if (number in counts) {
-            counts[number]++;
+    numbers.forEach((n) => {
+        if (n in counts) {
+            counts[n]++;
         } else {
-            counts[number] = 1;
+            counts[n] = 1;
         }
     });
 
-    for (number in counts) {
-        let count = counts[number];
+    for (n in counts) {
+        let count = counts[n];
         if (isOdd(count)) {
-            return +number;
+            return Number(n);
         }
     } 
 
