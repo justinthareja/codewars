@@ -7,16 +7,13 @@ function multiply (a, b) {
 }
 
 function persistence(n) {
-    let count = 0;
-    let number = n;
-
-    while(number.toString().length > 1) {
-        const digits = number.toString().split("");
-        number = digits.reduce(multiply);
-        count++;
+    n = n.toString();
+    if (n.length === 1) {
+        return 0;
     }
 
-    return count;
+    n = n.split("").reduce(multiply);
+    return 1 + persistence(n);
 }
 
 console.log(persistence(39), 'should equal', 3);
