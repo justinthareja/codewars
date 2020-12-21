@@ -1,32 +1,29 @@
 // Task
 // Write a function that, given a depth n, returns n top rows of Pascal's Triangle flattened into a one-dimensional list/array.
 
-function pascalsNumber(n, k) {
-    // Position 'k' is zero indexed
-    if (k === 0) {
-        return 1;
-    } else {
-        return pascalsNumber(n, k - 1) * ((n + 1 - k) / k);
-    }
-}
-
-
-function pascalsRow(n) {
-    let row = [];
-
-    for (let i = 0; i <= n; i++) {
-        row.push(pascalsNumber(n, i));
-    }
-
-    return row;
-}
-
-function pascalsTriangle(n) {
+function pascalsTriangle(depth) {
     let triangle = [];
+    // rows are zero indexed
+    depth = depth - 1;
 
-    // The example wants row with n(1) = [1], so iterate to n - 1 starting from 0
-    for (let i = 0; i < n; i++) {
-        triangle.push(pascalsRow(i));
+    for (let n = 0; n <= depth; n++) {
+        let row = [];
+        let previousRow = triangle[n - 1] || [];
+
+        for (k = 0; k <= n; k++) {
+            // first column of any row in pascal's triangle is always 1
+            if (k === 0) {
+                row.push(1);
+            } else {
+                row.push(
+                    previousRow[k - 1] +
+                    // default to 0 to prevent column counter from going beyond right boundary of triangle
+                    (previousRow[k] || 0)
+                );
+            }
+        }
+
+        triangle.push(row);
     }
 
     return triangle.flat();
