@@ -13,7 +13,7 @@
 
 
 function consecutiveDucks(n) {
-    for (let i = 2; i < (n / 2) + 1; i++) {
+    for (let i = 2; i < n; i++) {
         if(checkMod(i, n)) {
             return true;
         }
