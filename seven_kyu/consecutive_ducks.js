@@ -12,7 +12,7 @@
 // Guaranteed constraint : 2 ≤ N ≤ (2^32) -1 .
 
 
-unction consecutiveDucks(n) {
+function consecutiveDucks(n) {
     // console.log("For ", n);
   for (let i = 2; i <= n/2; i++) {
     //   console.log('i=', i)
