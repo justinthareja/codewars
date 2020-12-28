@@ -14,26 +14,19 @@
 
 // Both n and address could get upto 500 billion with over 200 random tests.
 
+
 function overTheRoad(address, n) {
-   let evens = [];
-   let odds = [];
+    let result = 0;
 
-   for (let i = 1; i <= n * 2; i += 2) {
-       odds.push(i);
-   }
+    if (address % 2 === 0) {
+        let row = (2 * n - address) / 2;
+        result = 2 * row + 1;
+    } else {
+        let row = Math.ceil(address / 2) - 1;
+        result = (n * 2) - (row * 2);
+    }
 
-   for (let i = n * 2; i >= 2; i -= 2) {
-       evens.push(i);
-   }
-
-   if (address % 2 === 0) {
-       let addressIndex = evens.indexOf(address);
-       return odds[addressIndex];
-   } else {
-       let addressIndex = odds.indexOf(address);
-       return evens[addressIndex];
-   }
-
+    return result;
 }
 
 console.log(overTheRoad(1, 3), 6);
