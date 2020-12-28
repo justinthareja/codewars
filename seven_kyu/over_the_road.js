@@ -16,17 +16,9 @@
 
 
 function overTheRoad(address, n) {
-    let result = 0;
-
-    if (address % 2 === 0) {
-        let row = (2 * n - address) / 2;
-        result = 2 * row + 1;
-    } else {
-        let row = Math.ceil(address / 2) - 1;
-        result = (n * 2) - (row * 2);
-    }
-
-    return result;
+    return address % 2 === 0 
+        ? 2 * n - address + 1
+        : 2 * ( n - ( Math.ceil( address / 2 ) - 1 ) );
 }
 
 console.log(overTheRoad(1, 3), 6);
