@@ -8,21 +8,15 @@
 //     Also, if a number is negative, return 0(for languages that do have them)
 
 function solution(number) {
-    let multiples = [];
-
-    if (number < 0) {
-        return 0;
-    }
+    let sum = 0;
 
     for (var i = 1; i < number; i++) {
         if (i % 3 === 0 || i % 5 === 0) {
-            multiples.push(i);
+            sum += i;
         }
     }
 
-    return multiples.reduce(function(a, b) {
-        return a + b;
-    }, 0);
+    return sum;
 }
 
 console.log(solution(10), 23);
