@@ -26,7 +26,11 @@
 // that Polycarpus used to make a dubsteb remix. Separate the words with a space.
 
 function songDecoder(song) {
-    
+    return removeWhiteSpace(song.replace(/WUB/g, " "));
+}
+
+function removeWhiteSpace(string) {
+    return string.trim().replace(/\s+/g, " ");
 }
 
 console.log(
