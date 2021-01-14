@@ -32,32 +32,94 @@
 function Connect4() {
     this.isPlayerOnesTurn = true;
     this.board = [
-        [0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0],
     ];
 
-    this.hasWinner = function hasWinner() {
-        // TODO
+
+    this.checkCols = function checkCols() {
+        var count = 0;
+        var hasWin = false;
+
+        for (let col = 0; col < 7; col++) {
+            count = 0;
+
+            for (let row = this.board.length -1; row >= 0; row--) {
+                let piece = this.board[row][col];
+
+                if (piece == this.getPlayer()) {
+                    count++
+                }
+
+                if (count == 4) {
+                    hasWin = true;
+                }
+            }
+        }
+
+        return hasWin;
+    };
+
+    this.checkRows = function checkRows() {
+        var count = 0;
+        var hasWin = false;
+
+        for (let row = this.board.length - 1; row >= 0; row--) {
+            count = 0;
+        
+            for (let col = 0; col < 7; col++) {
+                let piece = this.board[row][col];
+
+                if (piece == this.getPlayer()) {
+                    count++
+                }
+
+                if (count == 4) {
+                    hasWin = true;
+                }
+            }
+        }
+
+        return hasWin;
+    }
+
+    this.checkDiagonals = function checkDiagonals() {
         return false;
     };
 
+    this.printBoard = function printBoard() {
+        var print = "";
+
+        this.board.forEach(function printCol(col) {
+            print += JSON.stringify(col);
+            print += "\n";
+        });
+
+        console.log(print);
+    }
+
+    this.hasWinner = function hasWinner() {
+        return this.checkCols() || this.checkRows() || this.checkDiagonals();
+    };
+
     this.isValidColumn = function isValidColumn(col) {
-        var row = this.board[col];
-        
-        return row.includes(0);
+        for (let row = this.board.length - 1; row >= 0; row--) {
+            if (this.board[row][col] == 0) {
+                return true;
+            }
+        }
+
+        return false;
     };
 
     this.setPiece = function setPiece(col) {
-        var row = this.board[col];
-
-        for (let i = 0; i < row.length; i++) {
-            if (row[i] == 0) {
-                row[i] = 1;
+        for (let row = this.board.length - 1; row >= 0; row--) {
+            if (this.board[row][col] == 0) {
+                this.board[row][col] = this.getPlayer();
                 return;
             }
         }
@@ -67,6 +129,10 @@ function Connect4() {
 
     this.getPlayer = function getPlayer() {
         return this.isPlayerOnesTurn ? 1 : 2;
+    };
+
+    this.getOtherPlayer = function getOtherPlayer() {
+        return this.isPlayerOnesTurn ? 2: 1;
     };
 
     this.togglePlayerTurn = function togglePlayerTurn() {
@@ -91,7 +157,7 @@ Connect4.prototype.play = function (col) {
 
     this.togglePlayerTurn();
 
-    return `Player ${this.getPlayer()}'s turn`;
+    return `Player ${this.getOtherPlayer()} has a turn`;
 };
 
 
@@ -101,38 +167,50 @@ console.log("~~~~~~~~~ NEW GAME ~~~~~~~")
 // links prototype chain to that object
 // invokes function with this = {}
 // returns return value || this
-game = new Connect4();
+var game = new Connect4();
 console.log(game.play(0), "Player 1 has a turn", "Should return 'Player 1 has a turn'")
 console.log(game.play(0), "Player 2 has a turn", "Should return 'Player 2 has a turn'")
 
 
 console.log("~~~~~~~~~ NEW GAME ~~~~~~~")
-game = new Connect4();
-console.log(game.play(0), "Player 1 has a turn", "Should return 'Player 1 has a turn'")
-console.log(game.play(1), "Player 2 has a turn", "Should return 'Player 2 has a turn'")
-console.log(game.play(0), "Player 1 has a turn", "Should return 'Player 1 has a turn'")
-console.log(game.play(1), "Player 2 has a turn", "Should return 'Player 2 has a turn'")
-console.log(game.play(0), "Player 1 has a turn", "Should return 'Player 1 has a turn'")
-console.log(game.play(1), "Player 2 has a turn", "Should return 'Player 2 has a turn'")
-console.log(game.play(0), "Player 1 wins!", "Should return 'Player 1 wins!'")
+var game2 = new Connect4();
+console.log(game2.play(0), "Player 1 has a turn", "Should return 'Player 1 has a turn'")
+console.log(game2.play(1), "Player 2 has a turn", "Should return 'Player 2 has a turn'")
+console.log(game2.play(0), "Player 1 has a turn", "Should return 'Player 1 has a turn'")
+console.log(game2.play(1), "Player 2 has a turn", "Should return 'Player 2 has a turn'")
+console.log(game2.play(0), "Player 1 has a turn", "Should return 'Player 1 has a turn'")
+console.log(game2.play(1), "Player 2 has a turn", "Should return 'Player 2 has a turn'")
+console.log(game2.play(0), "Player 1 wins!", "Should return 'Player 1 wins!'")
 
 console.log("~~~~~~~~~ NEW GAME ~~~~~~~")
-game = new Connect4();
-console.log(game.play(4), "Player 1 has a turn", "Should return 'Player 1 has a turn'")
-console.log(game.play(4), "Player 2 has a turn", "Should return 'Player 2 has a turn'")
-console.log(game.play(4), "Player 1 has a turn", "Should return 'Player 1 has a turn'")
-console.log(game.play(4), "Player 2 has a turn", "Should return 'Player 2 has a turn'")
-console.log(game.play(4), "Player 1 has a turn", "Should return 'Player 1 has a turn'")
-console.log(game.play(4), "Player 2 has a turn", "Should return 'Player 2 has a turn'")
-console.log(game.play(4), "Column full!", "Should return 'Column full!'")
+var game3 = new Connect4();
+console.log(game3.play(4), "Player 1 has a turn", "Should return 'Player 1 has a turn'")
+console.log(game3.play(4), "Player 2 has a turn", "Should return 'Player 2 has a turn'")
+console.log(game3.play(4), "Player 1 has a turn", "Should return 'Player 1 has a turn'")
+console.log(game3.play(4), "Player 2 has a turn", "Should return 'Player 2 has a turn'")
+console.log(game3.play(4), "Player 1 has a turn", "Should return 'Player 1 has a turn'")
+console.log(game3.play(4), "Player 2 has a turn", "Should return 'Player 2 has a turn'")
+console.log(game3.play(4), "Column full!", "Should return 'Column full!'")
 
 console.log("~~~~~~~~~ NEW GAME ~~~~~~~")
-game = new Connect4();
-console.log(game.play(1), "Player 1 has a turn", "Should return 'Player 1 has a turn'")
-console.log(game.play(1), "Player 2 has a turn", "Should return 'Player 2 has a turn'")
-console.log(game.play(2), "Player 1 has a turn", "Should return 'Player 1 has a turn'")
-console.log(game.play(2), "Player 2 has a turn", "Should return 'Player 2 has a turn'")
-console.log(game.play(3), "Player 1 has a turn", "Should return 'Player 1 has a turn'")
-console.log(game.play(3), "Player 2 has a turn", "Should return 'Player 2 has a turn'")
-console.log(game.play(4), "Player 1 wins!", "Should return 'Player 1 wins!'")
-console.log(game.play(4), "Game has finished!", "Should return 'Game has finished!'")
+var game4 = new Connect4();
+console.log(game4.play(1), "Player 1 has a turn", "Should return 'Player 1 has a turn'")
+console.log(game4.play(1), "Player 2 has a turn", "Should return 'Player 2 has a turn'")
+console.log(game4.play(2), "Player 1 has a turn", "Should return 'Player 1 has a turn'")
+console.log(game4.play(2), "Player 2 has a turn", "Should return 'Player 2 has a turn'")
+console.log(game4.play(3), "Player 1 has a turn", "Should return 'Player 1 has a turn'")
+console.log(game4.play(3), "Player 2 has a turn", "Should return 'Player 2 has a turn'")
+console.log(game4.play(4), "Player 1 wins!", "Should return 'Player 1 wins!'")
+console.log(game4.play(4), "Game has finished!", "Should return 'Game has finished!'")
+
+
+console.log("~~~~~~~~~ NEW GAME ~~~~~~~")
+var game5 = new Connect4();
+game5.play(0);
+game5.play(1);
+game5.play(0);
+game5.play(1);
+game5.play(0);
+game5.play(1);
+console.log(game5.play(0), "Player 1 wins!")
+console.log(game5.play(0), "Game has finished!")
