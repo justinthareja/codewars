@@ -1,5 +1,6 @@
 // paired with Alex Zook
-
+// Implemented using long division
+// TODO: optimize so it doesn't timeout 
 function cycle(n) {
     let carry = 1;
     let howManyTimes = Math.floor(carry / n); // -> 0
