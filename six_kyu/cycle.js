@@ -1,21 +1,30 @@
+// paired with Alex Zook
+
 function cycle(n) {
-    // looking for a repeated cycle in the decimal part
-    // if that doesn't exist return -1
+    let carry = 1;
+    let howManyTimes = Math.floor(carry / n); // -> 0
+    let remainder = carry % n; // first remainder -> 1
+    let remainders = [];
+    let cycleLength = 0;
 
-        // n = 7
-    // do 1 / n
-        // 1 / 7
-    // convert result to string
-        // "0.14285714285714285"
-    // maybe consider edge case of repeats over long length (cycle length max 8 ?)
-    // lop off 0.
-        // "14285714285714285"
+    function findDigit() {
+        remainders.push(remainder);
+        carry = remainder * 10;
+        remainder = carry % n;
+        howManyTimes = Math.floor(carry / n);
+        cycleLength++;
+    }
 
-    // iterate cycle length from 1 to max (10?). for each cycle length (c):
-        // split the string every "c" characters
-        // check to make sure all the splits are the same
+    if (n % 2 == 0 || n % 5 == 0 || n % 10 == 0) {
+        return -1;
+    }
 
+    // loop this function until we find a repeat remainder
+    while (!remainders.includes(remainder)) {
+        findDigit();
+    }
 
+    return cycleLength;
 }
 
 console.log(cycle(33), 2)
