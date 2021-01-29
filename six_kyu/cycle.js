@@ -21,7 +21,7 @@ function cycle(n) {
     }
 
     // loop this function until we find a repeat remainder
-    while (!remainders.includes(remainder)) {
+    while (remainder != remainders[0]) {
         findDigit();
     }
 
